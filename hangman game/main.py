@@ -1,32 +1,98 @@
 import random
+stages = [r'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', r'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', r'''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
 word_list = ["aardvark", "baboon", "camel"]
 
 chosen_word = random.choice(word_list)
 print(chosen_word)
-
+lives = 6
 placeholder = ""
 word_length = len(chosen_word)
 for position in range(word_length):
     placeholder += "_"
-print(placeholder)
+print(f"Word to guess: {placeholder}")
 
-# TO DO-1: - Use a while loop to let the user guess again.
 correct_letters = []
-game_on = True
-while game_on:
+while lives > 0:
     guess = input("Guess a letter: ").lower()
     display = ""
-    if "_" in display:
-        game_on = False
-    # TO DO-2: Change the for loop so that you keep the previous correct letters in display.
+    
 
-    for letter in chosen_word:
-        if letter == guess:
-            display += letter
-            correct_letters.append(letter)
-        elif letter in correct_letters:
-            display += letter
+
+    
+    if guess in correct_letters:
+            print(f"You've already guessed {guess}")
+            print(stages[lives])
+            print(display)
+    else:
+        for letter in chosen_word:
+            if letter == guess:
+                display += letter
+                correct_letters.append(letter)
+            elif letter in correct_letters:
+                display += letter
+            else:
+                display += "_"
+        if guess in chosen_word:
+            print(display)
+            
         else:
-            display += "_"
-
-    print(display)
+            print(f"you have chosen {guess}, it is not in the word. You lose a life")
+            lives -= 1
+            
+    print(stages[lives])        
+    print(F"{lives}/6 lives left")
