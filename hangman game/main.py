@@ -72,27 +72,23 @@ while lives > 0:
     display = ""
     
 
-
-    
-    if guess in correct_letters:
-            print(f"You've already guessed {guess}")
-            print(stages[lives])
-            print(display)
-    else:
-        for letter in chosen_word:
-            if letter == guess:
-                display += letter
-                correct_letters.append(letter)
-            elif letter in correct_letters:
-                display += letter
-            else:
-                display += "_"
-        if guess in chosen_word:
-            print(display)
-            
+    for letter in chosen_word:
+        if letter == guess:
+            display += letter
+            correct_letters.append(letter)
+        elif letter in correct_letters:
+            display += letter
         else:
-            print(f"you have chosen {guess}, it is not in the word. You lose a life")
-            lives -= 1
-            
+            display += "_"
+    if guess not in chosen_word and guess not in correct_letters:
+        print(f"you have chosen {guess}, it is not in the word. You lose a life")
+        lives -= 1
+    elif "_" not in display:
+        print("Congradulations you have won.")
+        lives = 0
+    else:
+        print(f"You've already guessed {guess}")
+        
+    print(display)    
     print(stages[lives])        
     print(F"{lives}/6 lives left")
