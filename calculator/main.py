@@ -49,10 +49,10 @@ def operation_selector():
     return operator
 
 print(logo)
-first_number = first_input
-operator = operation_selector
-next_number = next_input
-answer = calculation(first_number(), next_number(), operator())
+first_number = first_input()
+operator = operation_selector()
+next_number = next_input()
+answer = calculation(first_number, next_number, operator)
 print(f"{round(first_number, 1)} {operator} {next_number} = {answer}")
 
 running = True
