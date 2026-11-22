@@ -68,6 +68,9 @@ while running:
         answer = calculation(answer, next_number, operator)
         print(f"{round(prev_answer, 1)} {operator} {next_number} = {answer}")
 
+    elif keep_calculating == "exit":
+        running = False
+
     else:
         print("\n" * 20)
         print(logo)
