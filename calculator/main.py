@@ -32,24 +32,27 @@ def calculation(n1, n2, selected_operator):
     return operations[selected_operator](n1, n2)
 
 def first_input():
+    """This function returns the user's first number"""
     n1 = float(input("What's the first number?: "))
     return n1
 
 def next_input():
+    """This function returns the user's next number"""
     n2 = float(input("What's the next number?: "))
     return n2
 
 def operation_selector():
+    """This function displays and returns an operator selected by the user"""
     for key in operations:
         print(key)
     operator = input("Pick an operation: ")
     return operator
 
 print(logo)
-first_number = first_input()
-operator = operation_selector()
-next_number = next_input()
-answer = calculation(first_number, next_number, operator)
+first_number = first_input
+operator = operation_selector
+next_number = next_input
+answer = calculation(first_number(), next_number(), operator())
 print(f"{round(first_number, 1)} {operator} {next_number} = {answer}")
 
 running = True
